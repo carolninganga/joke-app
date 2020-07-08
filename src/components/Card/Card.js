@@ -1,9 +1,13 @@
 import React from 'react'
 
-export default function Card() {
+ function Card(props) {
     return (
-        <div>
-            
+        <div className="card m-3">
+        <div className="card-body text-center">
+            <h5>{props.result}</h5> 
+        </div>    
         </div>
     )
-}
+} 
+
+export default Card;
