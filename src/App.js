@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import Card from './components/Card/Card';
 import './App.css';
+import API from './utils/API/API'
 import Button from './components/Button/Button';
 
 class App extends Component {
+  state = {
+    result: ''
+  }
+
+  componentDidMount() {
+  API.getData()
+  .then(res => this.setState({result: res.data.content}))   
+  }
+
+  handleClick = (event) => {
+    event.preventDefault();
+    API.getData()
+    .then(res =>this.setState({result: res.data.content}))
+    .catch(err => console.log(err));
+  }
+
   render() {
   return (
     <React.Fragment>
