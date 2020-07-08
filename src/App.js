@@ -6,8 +6,8 @@ class App extends Component {
   render() {
   return (
     <React.Fragment>
-      
-    <Card result={this.state.result}/>
+    <h1 className="text-center mt-3"><span role="img" aria-label="Joy">😂</span>Joke Joke<span role="img" aria-label="Joy">😂</span></h1> 
+    <Card />
     </React.Fragment>
   );
 }
