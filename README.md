@@ -18,6 +18,7 @@ Caroline Ninganga
 
 
 ## Link to project URL
+https://joke-master007.herokuapp.com/
 
 
 ## Tests
@@ -27,6 +28,6 @@ npm test
 
 ## Questions
 
-For questions about the project contact carolninganga or directly at null.
+For questions about the project or contributions please contact carolninganga.
 
 
