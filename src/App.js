@@ -1,53 +1,34 @@
 import React, { Component } from 'react';
-import Search from './components/Search/Search';
-import Result from './components/Result/Result';
-import API from './utils/API'
+import Card from './components/Card/Card';
 import './App.css';
+import API from './utils/API';
+import Button from './components/Button/Button';
+
 class App extends Component {
   state = {
-    result: [],
-    term: "",
-    location:""
-  };
-  componentDidMount() {
-    this.searchStore('coffee',"New York");
+    result: ''
   }
-  searchStore = (term,location) => {
-    API.search(term,location)
-    //.then(res => console.log(res.data.businesses))
-      .then(res => this.setState({ result: res.data.businesses })) 
-      .catch(err => console.log(err));
-  };
-  handleInputChange = event => {
-    const value = event.target.value;
-    const name = event.target.name;
-    this.setState ({
-      [name]: value
-    });
-  };
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.searchStore(this.state.term,this.state.location);
-  }
-  render() {
-    console.log("test",this.state.location)
 
-    return (
-      <div className="container h-100">  
-      <div className="row h-100 justify-content-center align-items-center">
-        <form className="col-10">
-        <Search 
-                term={this.state.term}
-                location={this.state.location}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}/>
-        <Result 
-          result = {this.state.result}
-        />
-        </form>
-      </div>
-      </div>
-    )
+  componentDidMount() {
+  API.getData()
+  .then(res => this.setState({result: res.data.content}))   
   }
+
+  handleClick = (event) => {
+    event.preventDefault();
+    API.getData()
+    .then(res =>this.setState({result: res.data.content}))
+    .catch(err => console.log(err));
+  }
+
+  render() {
+  return (
+    <React.Fragment>
+    <h1 className="text-center mt-3"><span role="img" aria-label="Joy">😂😂😂</span>Joke Jokes and more Jokes!!<span role="img" aria-label="Joy">😂😂😂</span></h1> 
+    <Card result={this.state.result}/>
+    <Button handleClick={this.handleClick}/>
+    </React.Fragment>
+  );
+}
 }
 export default App;
